@@ -1,0 +1,69 @@
+<div class = "row justify-content-center aling-items-center mt-5">
+    <div class="col-10">
+        <div class="card shadow">
+            <div class="card-header text-center">
+                <h3 class="card-title">Mantenimiento de productos</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Codigo</th>
+                                        <th>Nombre</th>
+                                        <th>Precio</th>
+                                        <th>Impuesto</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr *ngFor="let item of lista">
+                                        <td>{{item.codigo}}</td>
+                                        <td>{{item.nombre}}</td>
+                                        <td>{{item.precio | currency:'₡'}}</td>
+                                        <td>{{item.impuesto}}%</td>
+                                        <td>{{item.precio + ((item.precio * item.impuesto) / 100) | currency:'₡'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="my-3">
+                            <label>Codigo</label>
+                            <input type = "text" [(ngModel)]="nueva.codigo" class="form-control" placeholder="Digite...">    
+                        </div>
+                        
+                        <div class="my-3">
+                            <label>Nombre</label>
+                            <input type = "text" [(ngModel)]="nueva.nombre" class="form-control" placeholder="Digite...">
+                        </div>
+
+                        <div class="my-3">
+                            <label>Precio</label>
+                            <input type="number" [(ngModel)]="nueva.precio" class="form-control" placeholder="Digite...">
+                        </div>
+
+                        <div class="my-3">
+                            <label>Impuesto</label>
+                            <input type="number" [(ngModel)]="nueva.impuesto" class="form-control" placeholder="Digite...">
+                        </div>
+
+                        <div class="my-3" [(ngModel)]="nueva.total">
+                            <label>Subtotal</label>
+                            <h5 *ngIf="nueva.precio != 0">{{nueva.precio + ((nueva.precio * nueva.impuesto ) / 100 )| currency:'₡'}}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer d-flex justify-content-end">
+                <button class= "btn btn-primary " (click) = "Guardar()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>
