@@ -54,7 +54,7 @@
                         </div>
 
                         <div class="my-3" [(ngModel)]="nueva.total">
-                            <label>Subtotal</label>
+                            <label>Total</label>
                             <h5 *ngIf="nueva.precio != 0">{{nueva.precio + ((nueva.precio * nueva.impuesto ) / 100 )| currency:'₡'}}</h5>
                         </div>
                     </div>
